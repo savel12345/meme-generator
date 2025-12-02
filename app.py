@@ -16,11 +16,6 @@ def inject_docker_flag():
     }
 
 def draw_text_on_image(image: Image.Image, top_text: str, bottom_text: str) -> Image.Image:
-    """
-    Nariše top in bottom tekst. Uporablja 'anchors' za strogo pozicioniranje
-    na skrajni zgornji in spodnji rob.
-    Še vedno prilagodi velikost fonta, da ni 'cutoff'.
-    """
     image = image.convert("RGB")
     draw = ImageDraw.Draw(image)
     img_width, img_height = image.size
@@ -32,7 +27,6 @@ def draw_text_on_image(image: Image.Image, top_text: str, bottom_text: str) -> I
     edge_padding = int(img_height * 0.01) 
 
     def get_fitted_font(text, start_size):
-        """Poišče največji font, ki še paše v širino."""
         current_size = start_size
         while current_size > min_font_size:
             try:
